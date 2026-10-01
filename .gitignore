@@ -1,0 +1,4 @@
+app/wasm/
+app/*.wasm
+*.html
+node_modules/
