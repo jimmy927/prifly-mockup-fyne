@@ -11,18 +11,12 @@ self-contained HTML page, instead of an HTML imitation of a Fyne window.
   only. `build.sh` compiles it to wasm; prifly's checker runs it when `go` is on the PATH.
 - `scripts/check.ts`: a Bun-only validator of the recipe frontmatter, run by CI.
 
-## How prifly uses a pack
+## Use it in prifly
 
-A pack is a git repository of recipes. prifly clones it into its data folder and reads `mockup-stacks/*.md` from it, in the layer
-between the user's own recipes and the built-in ones. Add this pack with `packs.json` in prifly's mockup-stacks folder:
-
-```json
-{ "packs": [{ "name": "prifly-mockup-fyne", "url": "https://github.com/jimmy927/prifly-mockup-fyne.git" }] }
-```
-
-or with the host's environment: `PRIFLY_MOCKUP_STACK_PACKS=prifly-mockup-fyne=https://github.com/jimmy927/prifly-mockup-fyne.git`.
-The host pulls at most once a day and never makes a tool call wait for it. A session then gets this recipe from
-`mockup_recipe` when the project has `fyne.io/fyne/v2` in its `go.mod`, or when asked for the stack `fyne`.
+This repo is a prifly extension. In prifly, open **Extensions**, install from the git URL
+`https://github.com/jimmy927/prifly-mockup-fyne.git`, then enable it. Sessions then get the recipe from
+`mcp__prifly__mockup_recipe` (layer order: project `.prifly/mockup-stacks/` > user folder > enabled extensions >
+built-in). A project can also copy `mockup-stacks/fyne.md` into its own `.prifly/mockup-stacks/`.
 
 ## The recipe in one paragraph
 
@@ -49,7 +43,7 @@ bun scripts/check.ts
 ```
 
 validates the frontmatter against the loader's schema. From a prifly checkout,
-`bun run mockup-stacks:check --layer packs` also builds the fixture.
+`bun run mockup-stacks:check --dir <path-to-this-repo>/mockup-stacks` runs the full checker on this folder and also builds the fixture.
 
 ## License
 

@@ -1,0 +1,7 @@
+{
+  "id": "mockup-fyne",
+  "name": "Fyne mockup recipe",
+  "description": "A prifly mockup recipe for Fyne, the Go native GUI toolkit, built to wasm.",
+  "version": "0.1.0",
+  "mockupStacks": "mockup-stacks"
+}
