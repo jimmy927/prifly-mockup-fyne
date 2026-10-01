@@ -1,6 +1,6 @@
 # prifly-mockup-fyne
 
-A [prifly](https://github.com/jimmy927/prifly) mockup-stack recipe for **Fyne**, the Go native GUI toolkit. It tells a
+A prifly mockup-stack recipe for **Fyne**, the Go native GUI toolkit. It tells a
 prifly session how to render a mockup with the real Fyne widgets: Fyne's own WebAssembly target, packed into one
 self-contained HTML page, instead of an HTML imitation of a Fyne window.
 
